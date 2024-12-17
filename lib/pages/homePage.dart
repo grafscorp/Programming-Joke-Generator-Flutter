@@ -103,10 +103,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       joke = "";
     });
-    final res = await jokeClient.makeRequest(JokeRequest(
-        type: const JokeTypeQueryParam(JokeType.single),
-        pathParameter:
-            const JokePathParam(categories: [JokeCategory.programming])));
+    final res = await jokeClient.makeRequest(
+      JokeRequest(
+          type: const JokeTypeQueryParam(JokeType.single),
+          pathParameter: const JokePathParam(
+            categories: [JokeCategory.programming],
+          )),
+    );
     final map = json.decode(res.body);
     setState(() {
       joke = map['joke'];
